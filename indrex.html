@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proceso de Selección Virtual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #003366;
+      --secondary-color: #3f51b5; /* Azul medio para acento */
+      --success-color: #4caf50; /* Verde para éxito */
+      --background-light: #f4f6f8;
+      --card-background: #ffffff;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 30px;
+      background-color: var(--background-light);
+      color: #333;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+      border-bottom: 3px solid var(--secondary-color);
+      padding-bottom: 10px;
+      display: inline-block;
+      width: 100%;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-top: 0;
+      border-left: 5px solid var(--secondary-color);
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: var(--card-background);
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    ol {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ol li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #eee;
+      font-weight: 400;
+    }
+
+    ol li:last-child {
+      border-bottom: none;
+    }
+
+    /* Estilo de Botón */
+    .btn {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+      display: block;
+      margin-top: 20px;
+      width: auto;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #303f9f;
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Estilo para la sección de aprobados */
+    .aprobados {
+      background: #e8f5e9; /* Fondo muy claro de éxito */
+      border-left: 5px solid var(--success-color);
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .aprobados strong {
+      display: flex;
+      align-items: center;
+      color: var(--success-color);
+      margin-bottom: 5px;
+    }
+
+    .aprobados strong::before {
+      content: '✅'; /* Icono de check */
+      margin-right: 8px;
+      font-size: 18px;
+    }
+
+    .aprobados p {
+      margin: 5px 0;
+      line-height: 1.6;
+    }
+
+    /* Estilo para Inputs y Textareas */
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box; /* Asegura que el padding no cambie el ancho total */
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+      outline: none;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    /* Estilo específico de la entrevista */
+    #entrevista div:nth-child(2) {
+      background-color: #f0f4ff;
+      border: 1px dashed var(--primary-color);
+    }
+
+    /* Estilo del mensaje final */
+    #final h2 {
+      color: var(--success-color);
+      text-align: center;
+      font-size: 2.5em;
+    }
+
+    #final p {
+      text-align: center;
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Proceso de Selección – Jornada Única</h1>
+
+<div id="inicio" class="card">
+  <h2>Candidatos Participantes</h2>
+  <ol>
+    <li>Andrés Muñoz</li>
+    <li>Camila Rodríguez</li>
+    <li>Juan Esteban Silva</li>
+    <li>Marcela Ríos</li>
+    <li>Valentina Moreno</li>
+    <li>Sebastián Castaño</li>
+    <li>Laura Hernández</li>
+    <li>Nicolás Barrera</li>
+    <li>Daniela Torres</li>
+    <li>Erika Constanza Olarte Rodríguez</li>
+  </ol>
+  <button class="btn" onclick="mostrarPrueba1()">Iniciar Prueba 1</button>
+</div>
+
+<div id="prueba1" class="card hidden">
+  <h2>Prueba 1 — Prueba Psicotécnica Básica</h2>
+
+  <label for="p1_q1">1. ¿Qué número sigue en la secuencia? 2, 4, 8, 16...</label>
+  <input id="p1_q1" type="text" placeholder="Escribe tu respuesta aquí">
+
+  <label for="p1_q2">2. Razonamiento lógico (Explica tu respuesta):</label>
+  <textarea id="p1_q2" rows="2" placeholder="Explica cómo llegaste a la solución"></textarea>
+
+  <p>3. Selecciona la figura diferente:</p>
+  <p style="text-align:center; font-style:italic;">[Espacio para la imagen de figuras]</p>
+
+  <label for="p1_q4">4. Ordena las palabras para formar una frase coherente:</label>
+  <input id="p1_q4" type="text" placeholder="Escribe la frase ordenada">
+
+  <label for="p1_q5">5. Si un tren tarda 2 horas en recorrer 100 km, ¿cuánto tarda en recorrer 300 km? (Ignora variables de velocidad)</label>
+  <input id="p1_q5" type="text" placeholder="Tiempo en horas/minutos">
+
+  <div class="aprobados">
+    <strong>Aprobados:</strong>
+    <p>• Camila Rodríguez<br>
+       • Juan Esteban Silva<br>
+       • Marcela Ríos<br>
+       • Sebastián Castaño<br>
+       • Nicolás Barrera<br>
+       • Erika Constanza Olarte Rodríguez</p>
+  </div>
+
+  <button class="btn" onclick="mostrarPrueba2()">Continuar con el proceso</button>
+</div>
+
+<div id="prueba2" class="card hidden">
+  <h2>Prueba 2 — Role Play Situacional</h2>
+
+  <p><strong>Escenario:</strong> Un cliente molesto llama porque su pedido llegó tarde e incompleto. ¿Cómo manejarías la situación? (Detalla tu protocolo de atención)</p>
+  <textarea rows="4" placeholder="Describe paso a paso cómo resolverías esta situación difícil"></textarea>
+
+  <div class="aprobados">
+    <strong>Aprobados:</strong>
+    <p>• Juan Esteban Silva<br>
+       • Marcela Ríos<br>
+       • Nicolás Barrera<br>
+       • Erika Constanza Olarte Rodríguez</p>
+  </div>
+
+  <button class="btn" onclick="mostrarPrueba3()">Continuar con el proceso</button>
+</div>
+
+<div id="prueba3" class="card hidden">
+  <h2>Prueba 3 — Comunicación y Redacción</h2>
+
+  <p>Envía un correo formal informando un error en el reporte de asistencia. (Simulación)</p>
+
+  <label for="p3_asunto">Asunto:</label>
+  <input id="p3_asunto" type="text" placeholder="Asunto del correo">
+
+  <label for="p3_para">Para:</label>
+  <input id="p3_para" type="email" placeholder="Correo electrónico del destinatario (ej. rrhh@empresa.com)">
+
+  <label for="p3_cuerpo">Cuerpo del Correo:</label>
+  <textarea id="p3_cuerpo" rows="6" placeholder="Redacta el cuerpo del correo formal"></textarea>
+
+  <label for="p3_firma">Firma (Tu Nombre y Cargo):</label>
+  <input id="p3_firma" type="text" placeholder="Nombre Completo - Cargo">
+
+  <div class="aprobados">
+    <strong>Aprobados:</strong>
+    <p>• Nicolás Barrera<br>
+       • Erika Constanza Olarte Rodríguez</p>
+  </div>
+
+  <button class="btn" onclick="mostrarEntrevista()">Continuar con el proceso</button>
+</div>
+
+<div id="entrevista" class="card hidden">
+  <h2>Entrevista Virtual - Fase Final</h2>
+
+  <div style="border:1px solid #aaa; padding:25px; border-radius:10px; text-align:center; background-color: #f9f9f9;">
+    <p style="font-weight: 600; font-size: 1.1em;">Preparación de la Sesión</p>
+    <p>Cámara: <span style="color:var(--success-color);">Activada</span> | Micrófono: <span style="color:var(--success-color);">Activado</span></p>
+    <button class="btn" style="margin: 15px auto;">Iniciar Entrevista</button>
+    <p style="font-size: 0.9em; color: #777;">Asegúrate de tener buena conexión y un ambiente silencioso.</p>
+  </div>
+
+  <div class="aprobados">
+    <strong>Aprobado:</strong>
+    <p>• Erika Constanza Olarte Rodríguez</p>
+  </div>
+
+  <button class="btn" onclick="mostrarFinal()">Finalizar proceso</button>
+</div>
+
+<div id="final" class="card hidden">
+  <h2><span style="display:block; margin-bottom: 10px;">🎉</span> ¡Felicidades Erika!</h2>
+
+  <p>Debido a tus excelentes resultados a lo largo del proceso, **fuiste seleccionada** para la posición.</p>
+  <p>Por favor, revisa tu correo electrónico para conocer los detalles y presentarte en nuestras instalaciones para culminar la etapa de entrevista presencial final y firma de contrato.</p>
+</div>
+
+<script>
+function mostrarPrueba1(){
+  document.getElementById("inicio").classList.add("hidden");
+  document.getElementById("prueba1").classList.remove("hidden");
+}
+
+function mostrarPrueba2(){
+  document.getElementById("prueba1").classList.add("hidden");
+  document.getElementById("prueba2").classList.remove("hidden");
+}
+
+function mostrarPrueba3(){
+  document.getElementById("prueba2").classList.add("hidden");
+  document.getElementById("prueba3").classList.remove("hidden");
+}
+
+function mostrarEntrevista(){
+  document.getElementById("prueba3").classList.add("hidden");
+  document.getElementById("entrevista").classList.remove("hidden");
+}
+
+function mostrarFinal(){
+  document.getElementById("entrevista").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
